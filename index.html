@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1f2937" />
+  <title>Káva a mléko</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Mobilní evidence</p>
+        <h1>Káva a mléko</h1>
+        <p class="subtitle">Rychlé zadání vypitých nápojů přes připravené API.</p>
+      </div>
+      <button id="refreshBtn" class="icon-btn" type="button" aria-label="Obnovit data" title="Obnovit data">Obnovit</button>
+    </header>
+
+    <main>
+      <section class="card">
+        <label for="userSelect" class="label">Uživatel</label>
+        <select id="userSelect" class="input"></select>
+        <p class="hint">Poslední zvolený uživatel se ukládá do cookies, localStorage i sessionStorage.</p>
+      </section>
+
+      <section class="card">
+        <div class="section-header">
+          <h2>Nápoje</h2>
+          <button id="resetBtn" class="ghost-btn" type="button">Vynulovat</button>
+        </div>
+        <div id="drinksContainer" class="drinks-list"></div>
+      </section>
+
+      <section class="card totals-card">
+        <div class="totals-row">
+          <span>Celkem položek</span>
+          <strong id="totalCount">0</strong>
+        </div>
+        <div class="totals-row">
+          <span>Zvolený uživatel</span>
+          <strong id="selectedUserLabel">–</strong>
+        </div>
+      </section>
+
+      <section class="actions-sticky">
+        <button id="saveBtn" class="primary-btn" type="button">Odeslat záznam</button>
+      </section>
+
+      <section id="statusCard" class="card status-card hidden" aria-live="polite">
+        <p id="statusText"></p>
+        <pre id="payloadPreview" class="payload-preview hidden"></pre>
+      </section>
+    </main>
+  </div>
+
+  <template id="drinkRowTemplate">
+    <div class="drink-row">
+      <div class="drink-texts">
+        <strong class="drink-name"></strong>
+        <span class="drink-value-label">0 ks</span>
+      </div>
+      <div class="stepper" role="group" aria-label="Počet nápojů">
+        <button class="stepper-btn decrement" type="button" aria-label="Snížit počet">−</button>
+        <input class="drink-input" type="number" min="0" value="0" inputmode="numeric" />
+        <button class="stepper-btn increment" type="button" aria-label="Zvýšit počet">+</button>
+      </div>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
